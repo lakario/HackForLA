@@ -27,5 +27,8 @@ a {
 	text-decoration: none;
 }
 .search {
- 	margin: 1em 0em 1.3820em;
+	margin: 1.618em 0em 2em;
+}
+.cap {
+	text-transform: uppercase;
 }
