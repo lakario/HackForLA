@@ -11,3 +11,21 @@ h3.header1{
 	font-weight:400;
 	line-height:120%;	
 }
+object {
+	width: 100%;
+	display: block;
+	height: auto;
+	position: relative;
+	padding-top: 13.4%;
+}
+svg {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.logo{
+	width: 38.2%;
+	margin: 1.618em auto 2.382em;
+	}
