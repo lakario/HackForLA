@@ -25,7 +25,7 @@
                 <p>Salary: {{job.minimum | currency}} - {{job.maximum | currency}}</p>
                 <p>Apply between: {{job.start_date}} - {{job.end_date}}</p>
                 <p>Located in: {{job.locations[0]}}</p>
-                <a href="{{job.url}}">
+                <a href="{{job.url}}" target="_blank">
                     <p class="text-center">
                         Apply
                     </p>
@@ -35,7 +35,7 @@
     </div>
 </div>
 <div class="row">
-    <a href="https://www.ebenefits.va.gov">
+    <a href="#/bene">
         <div class="col-xs-6 text-center">
             eBenefits
         </div>
@@ -47,5 +47,5 @@
     </a>
 </div>
 <div class="row text-center">
-    VA Hotline <i class="fa fa-phone"></i> <a href="tel://1-800-827-1000">1-800-827-1000</a>
+    VA Hotline <i class="fa fa-phone"></i> <a href="tel://1-800-827-1000">1-800-827-1000</a>, Info and Help <a href="tel://211">211</a>
 </div>

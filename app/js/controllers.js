@@ -152,6 +152,9 @@ angular.module('myApp.controllers', [])
                $scope.jobs = data;
             });
         };
+        $scope.applSubmit = function(){
+            $scope.sent = true;
+        }
     }])
     .controller('utilities', ['$scope','utilitiesService', function() {
 
