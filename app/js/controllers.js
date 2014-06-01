@@ -151,6 +151,9 @@ angular.module('myApp.controllers', [])
                $scope.jobs = data;
             });
         };
+        $scope.applSubmit = function(){
+            $scope.sent = true;
+        }
     }])
     .controller('utilitiesCtrl', ['$scope','utilityService','$timeout', function($scope, utilityService, $timeout) {
         utilityService.getUtilities().then(function(data) {
