@@ -96,6 +96,9 @@ angular.module('myApp.services', [])
                     });
                 return deferred.promise;
             }
+            ,job: function(){
+                return {};
+            }
         }
     })
     .factory('utilityService', function($http, $q) {

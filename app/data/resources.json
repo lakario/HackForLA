@@ -1,0 +1,28 @@
+[
+    {
+        "title": "L.A. County Human Resources-Testing/Training Center",
+        "address": '3333 Wilshire Blvd #100, Los Angeles, CA 90010',
+        "phone": '213-736-2211',
+        "phone24": '800-970-5478',
+        "phone24Text": 'Call the 24-Hour Hotline',
+        "tty": '800-897-0077',
+        "tty2": '800-899-4099'
+        "text": 'For information on open competitive job listings in Los Angeles County Departments'
+    },
+    {
+        "title": 'Los Angeles County Department of Public Social Services, Human Resources Division',
+        "address": '3435 Wilshire Blvd (The Equitable Plaza Bldg), Los Angeles, CA 90010',
+        "phone": '213-639-5522',
+        "phone24": '213-639-5520',
+        "phone24Text": '24 Hour Exam Information',
+        "url": 'http://www.ladpss.org/dpss/hrd/default.cfm'
+    },
+    {
+        "title": 'Metro Headquarters, Employment Office'
+        "address": 'One Gateway Plaza Level, Los Angeles, CA 90012-2932',
+        "phone24": '213-922-6217',
+        "phone24Text": 'Jobline',
+        "text": 'Riders with hearing or speech impairments, use the California Relay Service, 711, and then the number you need.',
+        "url": 'http://www.metro.net/about/jobs'
+    }
+]
