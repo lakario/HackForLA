@@ -64,7 +64,12 @@ angular.module('myApp.controllers', [])
             getFeed();
         };
 
-        getFeed();
+        locationService.getGeoLocation(function (position) {
+            $scope.location = position;
+            getFeed();
+        }, function() {
+            getFeed();
+        })
 
         $scope.toggleUseMyLocation = function() {
             if($scope.nearMe) {
@@ -87,33 +92,37 @@ angular.module('myApp.controllers', [])
                 var mapPoint = [Number(facility.longitude), Number(facility.latitude)];
                 var zoomLevel = 16;
 
-                if(!facilityMap) {
-                    require([
-                        "esri/map",
-                        "esri/graphic",
-
-                        "esri/symbols/SimpleMarkerSymbol",
-                        "esri/symbols/SimpleLineSymbol",
-                        "esri/symbols/SimpleFillSymbol",
-
-                        "dojo/domReady!"
-                    ], function (Map, Graphic, SimpleMarkerSymbol) {
-                        facilityMap = new Map("facility-map", {
-                            center: mapPoint,
-                            zoom: zoomLevel,
-                            basemap: "streets",
-                            isScrollWheelZoom: false
-                        });
-
-                        facilityMap.disableScrollWheelZoom();
-
-                        //var graphic = new Graphic(evt.geometry, symbol);
-                        //map.graphics.add(graphic);
+                if(facilityMap) {
+                    facilityMap.destroy();
+                }
+                require([
+                    "esri/map", "esri/geometry/Circle", "esri/symbols/SimpleFillSymbol", "esri/symbols/PictureMarkerSymbol",
+                    "esri/graphic", "esri/layers/GraphicsLayer",
+                    "dojo/dom", "dojo/dom-attr", "dojo/domReady!"
+                ], function (Map, Circle, SimpleFillSymbol, PictureMarkerSymbol,
+                             Grahpic, GraphicsLayer,
+                             dom, domAttr) {
+                    facilityMap = new Map("facility-map", {
+                        center: mapPoint,
+                        zoom: zoomLevel,
+                        basemap: "streets",
+                        isScrollWheelZoom: false,
+                        smartNavigation: false
                     });
-                }
-                else {
-                    facilityMap.centerAt(mapPoint);
-                }
+                    facilityMap.on("load", function() {
+                        facilityMap.disableMapNavigation();
+                        facilityMap.disableScrollWheelZoom();
+                    });
+
+
+                    var symbol = new PictureMarkerSymbol('http://static.arcgis.com/images/Symbols/Shapes/' + "BluePin1LargeB.png", 32, 32).setOffset(0, 15);
+                    var point = new esri.geometry.Point(mapPoint[0], mapPoint[1]);
+                    point = esri.geometry.geographicToWebMercator(point);
+                    var graphic = new esri.Graphic(point, symbol);
+                    var layer = new esri.layers.GraphicsLayer();
+                    layer.add(graphic);
+                    facilityMap.addLayer(layer);
+                });
             });
         }
 
