@@ -3,7 +3,8 @@
 /* Controllers */
 
 angular.module('myApp.controllers', [])
-    .controller('homeCtrl', ['$scope','jobService', function($scope, jobService) {
+    .controller('homeCtrl', ['$scope','jobService', '$location', '$rootScope', function($scope, jobService, $location, $rootScope) {
+        $scope.job = jobService.job();
         $scope.jobSearch = function(keyword, latLong){
             $scope.jobs = [];
             jobService.getJobSearch(keyword, latLong).then(function(data){
@@ -42,6 +43,12 @@ angular.module('myApp.controllers', [])
         $scope.getGeoLocation(function(position){
             $scope.latLong = position.coords.latitude + "," + position.coords.longitude;
         });
+
+        $scope.applyJob = function(job){
+            $scope.job = job;
+            debugger;
+            $location.path('/jobappl');
+        };
     }])
     .controller('facilityCtrl', ['$scope', 'facilityService', 'locationService', function($scope, facilityService, locationService) {
         var facilityMap;
@@ -144,7 +151,8 @@ angular.module('myApp.controllers', [])
         });
 
     }])
-    .controller('jobCtrl', ['$scope','jobService', function($scope, jobService) {
+    .controller('jobCtrl', ['$scope','jobService', '$location', '$rootScope', function($scope, jobService, $location, $rootScope) {
+        $scope.job = jobService.job();
         $scope.jobSearch = function(keyword){
             $scope.jobs = [];
             jobService.getJobSearch(keyword).then(function(data){
@@ -153,7 +161,7 @@ angular.module('myApp.controllers', [])
         };
         $scope.applSubmit = function(){
             $scope.sent = true;
-        }
+        };
     }])
     .controller('utilitiesCtrl', ['$scope','utilityService','$timeout', function($scope, utilityService, $timeout) {
         utilityService.getUtilities().then(function(data) {
