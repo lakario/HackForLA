@@ -16,5 +16,6 @@ angular.module('myApp', [
     $routeProvider.when('/facilities', {templateUrl: 'partials/facilities.html', controller: 'facilityCtrl'});
     $routeProvider.when('/jobs', {templateUrl: 'partials/jobs.html', controller: 'jobCtrl'});
     $routeProvider.when('/bene', {templateUrl: 'partials/beneappl.html', controller: 'jobCtrl'});
+    $routeProvider.when('/utilities', {templateUrl: 'partials/utilities.html', controller: 'utilitiesCtrl'});
     $routeProvider.otherwise({redirectTo: '/home'});
 }]);
