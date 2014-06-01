@@ -75,7 +75,7 @@ angular.module('myApp.services', [])
                 return deferred.promise;
             }
         };
-    });
+    })
     .factory('jobService', function($http, $q){
         return {
             getJobSearch: function(keyword, latLong){
@@ -97,4 +97,4 @@ angular.module('myApp.services', [])
                 return deferred.promise;
             }
         }
-    })
+    });
