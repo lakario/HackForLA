@@ -1,0 +1,65 @@
+<h1>Pay Your Utilities</h1>
+
+        <div style="padding: 0 10px;">
+<div class="row">
+    <label for="utilCompany">Utility Company:</label>
+    <select ng-model="utilCompany" class="form-control col-xs-12" id="utilCompany">
+        <option ng-repeat="utility in utilities">{{utility}}</option>
+    </select>
+</div>
+
+<div ng-show="utilCompany">
+    <div class="row">
+        <label for="accountNbr">Account Nbr.</label>
+        <input type="text" id="accountNbr" class="form-control col-xs-12" ng-model="accountNbr" />
+    </div>
+    <div class="row row-spaced-small">
+        <label for="lastName">Last Name</label>
+        <input type="text" id="lastName" class="form-control col-xs-12" ng-model="lastName" />
+    </div>
+    <div class="row">
+        <span ng-show="showSpinner" class="text-center">
+            <i class="fa fa-spinner fa-spin"></i> Checking Account
+        </span>
+    </div>
+</div>
+<br />
+
+<div class="row" ng-show="accountNotFound">
+    <div class="col-xs-12 text-right">
+        Account Not Found
+    </div>
+</div>
+<div class="row billingSummary" ng-show="showPaymentForm">
+    <div class="col-xs-6 pull-right">
+        <div class="row">
+            <div class="col-xs-6">
+                Billing Period
+            </div>
+            <div class="col-xs-6 pull-right">
+                {{billingPeriod}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">
+                Total Due
+            </div>
+            <div class="col-xs-6 pull-right">
+                {{billingDue | currency}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="pull-right">
+                <form action="" method="POST">
+                    <script
+                            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                            data-key="pk_test_IDSsylTAljiY4ICMR1eyrHEr"
+                            data-name="Pay Utility Bill"
+                            data-description="Billing Period 4/11/14-5/11/14">
+                    </script>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+        </div>

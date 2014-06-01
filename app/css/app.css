@@ -50,6 +50,9 @@ a {
     font-size: 16px;
     margin: 0;
     font-weight: bold;
+    text-overflow:ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .text-small {
@@ -91,7 +94,7 @@ a {
 }
 
 .facility-desc {
-    max-height: 300px;
+    max-height: 225px;
     overflow: hidden;
 }
 

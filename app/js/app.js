@@ -14,8 +14,7 @@ angular.module('myApp', [
 .config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/home', {templateUrl: 'partials/home.html', controller: 'homeCtrl'});
     $routeProvider.when('/facilities', {templateUrl: 'partials/facilities.html', controller: 'facilityCtrl'});
-    $routeProvider.when('/facility:facilityId', {templateUrl: 'partials/facility.html', controller: 'facilityCtrl'});
     $routeProvider.when('/jobs', {templateUrl: 'partials/jobs.html', controller: 'jobCtrl'});
-    $routeProvider.when('/job:jobId', {templateUrl: 'partials/job.html', controller: 'jobCtrl'});
+    $routeProvider.when('/utilities', {templateUrl: 'partials/utilities.html', controller: 'utilitiesCtrl'});
     $routeProvider.otherwise({redirectTo: '/home'});
 }]);

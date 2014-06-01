@@ -122,7 +122,7 @@ angular.module('myApp.controllers', [])
             var $sidebar   = $("#facility-details"),
                 $window    = $(window),
                 offset     = $sidebar.offset(),
-                topPadding = 75;
+                topPadding = 65;
 
             $window.scroll(function() {
                 if($window.width() > 768) {
@@ -137,7 +137,6 @@ angular.module('myApp.controllers', [])
                     }
                 }
                 else {
-                    debugger;
                     $sidebar.css({marginTop: 0});
                 }
             });
@@ -153,6 +152,67 @@ angular.module('myApp.controllers', [])
             });
         };
     }])
-    .controller('utilities', ['$scope','utilitiesService', function() {
+    .controller('utilitiesCtrl', ['$scope','utilityService','$timeout', function($scope, utilityService, $timeout) {
+        utilityService.getUtilities().then(function(data) {
+            $scope.utilities = data.utilities;
+        });
 
+        $scope.$watch('utilCompany', function(newVal, oldVal) {
+            if(newVal != oldVal) {
+                $scope.showPaymentForm = false;
+            }
+            showSpinner();
+        });
+
+        $scope.$watch('accountNbr', function(newVal, oldVal) {
+            if(newVal != oldVal) {
+                $scope.showPaymentForm = false;
+            }
+            showSpinner();
+        });
+
+        $scope.$watch('lastName', function(newVal, oldVal) {
+            if(newVal != oldVal) {
+                $scope.showPaymentForm = false;
+            }
+            showSpinner();
+        });
+
+        $scope.gotAccount = false;
+        $scope.loadingTimeout = undefined;
+
+        function showSpinner() {
+            if($scope.utilCompany
+                && $scope.accountNbr && $scope.accountNbr.length > 4
+                && $scope.lastName && $scope.utilCompany.length > 4) {
+                $scope.showSpinner = true;
+
+                if($scope.loadingTimeout) {
+                    $timeout.cancel($scope.loadingTimeout);
+                }
+                $scope.loadingTimeout = $timeout(function() {
+                    var rand = Math.floor((Math.random() * 4) + 1);
+
+                    $scope.showSpinner = false;
+
+                    if(!$scope.gotAccount || rand % 2 == 0) {
+                        $scope.accountNotFound = false;
+                        $scope.showPaymentForm = true;
+                        $scope.gotAccount = true;
+                    }
+                    else {
+                        $scope.accountNotFound = true;
+                    }
+                }, 500);
+            }
+        }
+
+        $scope.$watch('showPaymentForm', function(newVal, oldVal) {
+            if(newVal != oldVal) {
+                var month = Math.floor((Math.random() * 12) + 1);
+                var day = Math.floor((Math.random() * 30) + 1);
+                $scope.billingPeriod = month + "/" + day + "/14-" + (month + 1) + "/" + day + "/14"
+                $scope.billingDue = Math.floor((Math.random() * 85) + 15) + Math.random();
+            }
+        })
     }]);

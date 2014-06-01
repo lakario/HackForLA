@@ -1,7 +1,6 @@
 <button type="button" ng-click="refreshFeed()">Refresh</button>
 
-<h1>Facilities</h1>
-
+<h1>VA Facilities</h1>
 
 <div class="row">
     <div class="col-xs-12 col-md-6">
@@ -11,7 +10,7 @@
             </div>
             <div class="col-xs-5 text-right">
                 <label for="nearMe" class="use-location {{nearMe ? 'active' : ''}}">
-                    <input type="checkbox" ng-model="nearMe" id="nearMe" ng-change="toggleUseMyLocation()" /> Use My Current Location <i class="fa fa-map-marker"></i>
+                    <input type="checkbox" ng-model="nearMe" id="nearMe" ng-change="toggleUseMyLocation()" /> Use Current Location <i class="fa fa-map-marker"></i>
                 </label>
             </div>
         </div>
@@ -25,12 +24,9 @@
                                 <p class="text-small">{{facility.address}}</p>
                             </div>
                             <div class="col-xs-3 col-sm-2 col-xs-offset-1 text-center">
-                                <a href="tel://{{facility.phoneNumber}}" ng-show="facility.phoneNumber" class="btn btn-default col-xs-12">Call <i class="fa fa-phone"></i></a>
+                                <a href="tel://{{facility.phoneNumber}}" ng-show="facility.phoneNumber" class="btn btn-info col-xs-12"><i class="fa fa-phone"></i> Call</a>
                                 <span ng-show="!facility.phoneNumber">Unavail. #</span><br />
                             </div>
-                            <!--<div class="col-xs-3 col-sm-2 text-center">-->
-                            <!--<a href="https://maps.google.com/?q={{(facility.address | encodeURIComponent)}}" class="btn btn-default col-xs-12" target="_blank">Map <i class="fa fa-map-marker"></i></a>-->
-                            <!--</div>-->
                         </div>
                     </a>
                 </li>
@@ -39,11 +35,20 @@
     </div>
     <div class="col-xs-12 col-md-5 col-md-offset-1">
         <div ng-show="facility" class="animate-show" id="facility-details">
-            <h2>{{facility.name}}</h2>
-            <div class="claro">
+            <h2 class="text-center">{{facility.name}}</h2>
+            <div class="row row-spaced-small">
+                <a href="tel://{{facility.phone}}" class="btn btn-info col-xs-8 col-xs-offset-2"><i class="fa fa-phone"></i> Call <strong>{{facility.phone}}</strong></a>
+            </div>
+            <div class="row row-spaced-small">
+                <a href="{{facility.url}}" target="_blank" class="btn btn-info col-xs-8 col-xs-offset-2"><i class="fa globe"></i> Visit <strong>Website</strong></a>
+            </div>
+            <br />
+            <div class="claro" style="margin: 0 auto;">
                 <div id="facility-map">
                 </div>
             </div>
+            <br />
+            <div class="text-center">{{facility.address}} {{facility.city}}, {{facility.state}} {{facility.postal_code}}</div><br />
             <div ng-bind-html="facility.description" class="facility-desc">
             </div>
         </div>
