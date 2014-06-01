@@ -101,8 +101,11 @@ angular.module('myApp.controllers', [])
                         facilityMap = new Map("facility-map", {
                             center: mapPoint,
                             zoom: zoomLevel,
-                            basemap: "streets"
+                            basemap: "streets",
+                            isScrollWheelZoom: false
                         });
+
+                        facilityMap.disableScrollWheelZoom();
 
                         //var graphic = new Graphic(evt.geometry, symbol);
                         //map.graphics.add(graphic);
@@ -119,17 +122,23 @@ angular.module('myApp.controllers', [])
             var $sidebar   = $("#facility-details"),
                 $window    = $(window),
                 offset     = $sidebar.offset(),
-                topPadding = 40;
+                topPadding = 75;
 
             $window.scroll(function() {
-                if ($window.scrollTop() > offset.top) {
-                    $sidebar.stop().animate({
-                        marginTop: $window.scrollTop() - offset.top + topPadding
-                    });
-                } else {
-                    $sidebar.stop().animate({
-                        marginTop: 0
-                    });
+                if($window.width() > 768) {
+                    if ($window.scrollTop() > offset.top) {
+                        $sidebar.stop().animate({
+                            marginTop: $window.scrollTop() - offset.top + topPadding
+                        });
+                    } else {
+                        $sidebar.stop().animate({
+                            marginTop: 0
+                        });
+                    }
+                }
+                else {
+                    debugger;
+                    $sidebar.css({marginTop: 0});
                 }
             });
 
@@ -143,4 +152,7 @@ angular.module('myApp.controllers', [])
                $scope.jobs = data;
             });
         };
+    }])
+    .controller('utilities', ['$scope','utilitiesService', function() {
+        
     }]);

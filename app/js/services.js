@@ -97,4 +97,22 @@ angular.module('myApp.services', [])
                 return deferred.promise;
             }
         }
-    });
+    })
+    .factory('utilityService', function($http, $q) {
+        return {
+            getUtilities: function () {
+                var url = 'http://localhost:8000/data/utilities.json';
+                var deferred = $q.defer();
+
+                $http.get(url)
+                    .success(function (data, status, headers, config) {
+                        deferred.resolve(data);
+                    })
+                    .error(function (data, status, headers, config) {
+                        deferred.reject(data, status);
+                    });
+
+                return deferred.promise;
+            }
+        };
+    })

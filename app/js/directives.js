@@ -7,7 +7,7 @@ angular.module('myApp.directives', [])
     .directive('collapsible', function(){
         return {
             restrict: 'A',
-            link: function(scope, element, attributes){
+            link: function(scope, element, attrs){
                 $(element).collapse();
             }
         }

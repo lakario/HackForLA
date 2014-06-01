@@ -22,7 +22,7 @@
                         <div class="row">
                             <div class="col-xs-8 col-sm-9">
                                 <h3>{{facility.name.text}}</h3>
-                                <div>{{facility.address}}</div>
+                                <div class="text-small">{{facility.address}}</div>
                             </div>
                             <div class="col-xs-3 col-sm-2 col-xs-offset-1 text-center">
                                 <a href="tel://{{facility.phoneNumber}}" ng-show="facility.phoneNumber" class="btn btn-default col-xs-12">Call <i class="fa fa-phone"></i></a>
@@ -37,15 +37,14 @@
             </ul>
         </div>
     </div>
-    <div class="col-xs-12 col-md-6">
+    <div class="col-xs-12 col-md-5 col-md-offset-1">
         <div ng-show="facility" class="animate-show" id="facility-details">
-            <h2>{{facility.name}} - {{facility.latitude}},{{facility.longitude}}</h2>
+            <h2>{{facility.name}}</h2>
             <div class="claro">
                 <div id="facility-map">
-
                 </div>
             </div>
-            <div ng-bind-html="facility.description">
+            <div ng-bind-html="facility.description" class="facility-desc">
             </div>
         </div>
     </div>
