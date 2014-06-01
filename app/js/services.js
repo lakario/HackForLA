@@ -58,7 +58,7 @@ angular.module('myApp.services', [])
                 return deferred.promise;
             }
             , getFacility: function (stationId) {
-                var url = 'http://localhost:8000/data/facilities.json';
+                var url = '/data/facilities.json';
                 var deferred = $q.defer();
 
                 $http.get(url)
@@ -104,7 +104,7 @@ angular.module('myApp.services', [])
     .factory('utilityService', function($http, $q) {
         return {
             getUtilities: function () {
-                var url = 'http://localhost:8000/data/utilities.json';
+                var url = '/data/utilities.json';
                 var deferred = $q.defer();
 
                 $http.get(url)
