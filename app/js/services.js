@@ -76,3 +76,25 @@ angular.module('myApp.services', [])
             }
         };
     });
+    .factory('jobService', function($http, $q){
+        return {
+            getJobSearch: function(keyword, latLong){
+                var url = "";
+                if(latLong){
+                    url = 'http://api.usa.gov/jobs/search.json?query=jobs&lat_lon=' + latLong + '&callback=JSON_CALLBACK'
+                }else {
+                    url = 'http://api.usa.gov/jobs/search.json?query=' + window.encodeURI(keyword) + "&callback=JSON_CALLBACK"
+                }
+                var deferred = $q.defer();
+
+                $http.jsonp(url)
+                    .success(function (data, status, headers, config){
+                        deferred.resolve(data)
+                    })
+                    .error(function (data, status, headers, config){
+                       deferred.reject(data, status);
+                    });
+                return deferred.promise;
+            }
+        }
+    })
