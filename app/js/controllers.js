@@ -114,10 +114,12 @@ angular.module('myApp.controllers', [])
                         zoom: zoomLevel,
                         basemap: "streets",
                         height: 250,
-                        isScrollWheelZoom: false
+                        isScrollWheelZoom: false,
+                        isPan: false
                     });
                     facilityMap.on("load", function() {
                         facilityMap.disableScrollWheelZoom();
+                        facilityMap.disableMapNavigation();
                     });
 
                     var symbol = new PictureMarkerSymbol('http://static.arcgis.com/images/Symbols/Shapes/' + "BluePin1LargeB.png", 32, 32).setOffset(0, 15);
@@ -131,31 +133,35 @@ angular.module('myApp.controllers', [])
             });
         }
 
-
-        $(function() {
-            var $sidebar   = $("#facility-details"),
-                $window    = $(window),
-                offset     = $sidebar.offset(),
-                topPadding = 65;
-
-            $window.scroll(function() {
-                if($window.width() > 768) {
-                    if ($window.scrollTop() > offset.top) {
-                        $sidebar.stop().animate({
-                            marginTop: $window.scrollTop() - offset.top + topPadding
-                        });
-                    } else {
-                        $sidebar.stop().animate({
-                            marginTop: 0
-                        });
-                    }
-                }
-                else {
-                    $sidebar.css({marginTop: 0});
-                }
-            });
-
-        });
+//
+//        $(function() {
+//            var $sidebar   = $("#facility-details"),
+//                $window    = $(window),
+//                offset     = $sidebar.offset(),
+//                topPadding = 65;
+//
+//            $window.scroll(function() {
+//                if($window.width() > 768) {
+////                    if ($window.scrollTop() > offset.top) {
+////                        $sidebar.stop().animate({
+////                            marginTop: $window.scrollTop() - offset.top + topPadding
+////                        });
+////                    } else {
+////                        $sidebar.stop().animate({
+////                            marginTop: 0
+////                        });
+////                    }
+//                    $sidebar.css({'position': 'fixed', 'right': '30px', top: '20px'});
+//
+//                }
+//                else {
+////                    $sidebar.css({marginTop: 0});
+//                    $sidebar.css({'position': 'static'});
+//                }
+//
+//            });
+//
+//        });
 
     }])
     .controller('jobCtrl', ['$scope','jobService', '$location', '$rootScope', function($scope, jobService, $location, $rootScope) {

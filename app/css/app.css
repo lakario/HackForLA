@@ -94,7 +94,7 @@ a {
 }
 
 .facility-desc {
-    max-height: 225px;
+    /*max-height: 225px;*/
     overflow: hidden;
 }
 
@@ -110,4 +110,9 @@ blockquote > dir {
 
 #facility-map {
     height: 250px;
+}
+
+.btn-info,
+.fa-phone {
+    color: white !important;
 }
