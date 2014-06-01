@@ -154,5 +154,5 @@ angular.module('myApp.controllers', [])
         };
     }])
     .controller('utilities', ['$scope','utilitiesService', function() {
-        
+
     }]);

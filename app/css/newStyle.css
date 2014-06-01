@@ -1,0 +1,13 @@
+/* app css stylesheet */
+
+.listing{
+	margin-bottom:.61820em;	
+	padding-bottom:1.3820em;
+	border-bottom:1px solid #ccc;
+}
+h3.header1{
+	font-size:1.21em;
+	margin-top:0;
+	font-weight:400;
+	line-height:120%;	
+}
