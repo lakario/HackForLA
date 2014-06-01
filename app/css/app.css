@@ -32,3 +32,39 @@
 a {
     text-decoration: none;
 }
+
+.no-padding {
+    padding: 0 0 0 0 !important;
+}
+
+.no-margin {
+    margin: 0;
+}
+
+.search-result {
+    height: 90px;
+    padding: 25px 10px;
+    border: 1px solid #999;
+}
+
+.search-result h3 {
+    margin: 0;
+    padding-top: 5px;
+    font-size: 16px;
+}
+
+.search-result a {
+    display: block;
+}
+
+.fa-map-marker {
+    font-size: 1.2em;
+}
+
+.use-location.active {
+    color: #0066CC;
+}
+
+.row.row-spaced-small {
+    margin-bottom: 5px;
+}
