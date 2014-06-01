@@ -113,14 +113,12 @@ angular.module('myApp.controllers', [])
                         center: mapPoint,
                         zoom: zoomLevel,
                         basemap: "streets",
-                        isScrollWheelZoom: false,
-                        smartNavigation: false
+                        height: 250,
+                        isScrollWheelZoom: false
                     });
                     facilityMap.on("load", function() {
-                        facilityMap.disableMapNavigation();
                         facilityMap.disableScrollWheelZoom();
                     });
-
 
                     var symbol = new PictureMarkerSymbol('http://static.arcgis.com/images/Symbols/Shapes/' + "BluePin1LargeB.png", 32, 32).setOffset(0, 15);
                     var point = new esri.geometry.Point(mapPoint[0], mapPoint[1]);

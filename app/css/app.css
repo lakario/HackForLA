@@ -107,3 +107,7 @@ blockquote {
 blockquote > dir {
     padding-left: 5px !important;
 }
+
+#facility-map {
+    height: 250px;
+}
