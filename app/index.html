@@ -3,29 +3,17 @@
 <head>
   <meta charset="utf-8">
   <title>My AngularJS App</title>
-  <link rel="stylesheet" href="css/app.css"/>
+  <link rel="stylesheet" href="css/app.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
-  <!--<ul class="menu">-->
-    <!--<li><a href="#/view1">view1</a></li>-->
-    <!--<li><a href="#/view2">view2</a></li>-->
-  <!--</ul>-->
-
-  <div ng-controller="vaFacilitiesCtrl">
-      <button type="button" ng-click="refreshFeed()">Refresh</button>
-
-      <h3>Facilities</h3>
-      <ul>
-          Search <input type="text" ng-model="search" />
-          <li ng-repeat="facility in facilities | filter:search">
-              <strong>{{facility.name.text}}</strong> - <a href="{{facility.name.href}}">link</a> - <a ng-click="facility.showAddress = true" href="javascript:// Show Address">Show Address</a>
-              <div ng-show="facility.showAddress">
-                  {{facility.address}}
-              </div>
-          </li>
-      </ul>
-
-  </div>
+  <ul class="menu">
+    <li><a href="#/home">Home</a></li>
+    <li><a href="#/facilities">Facilities</a></li>
+    <li><a href="#/facility">Facility</a></li>
+    <li><a href="#/jobs">Jobs</a></li>
+    <li><a href="#/job">Job</a></li>
+  </ul>
 
   <div ng-view></div>
 

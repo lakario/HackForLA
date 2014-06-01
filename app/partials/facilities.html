@@ -1,0 +1,14 @@
+<button type="button" ng-click="refreshFeed()">Refresh</button>
+
+<h3>Facilities</h3>
+<ul>
+    Search <input type="text" ng-model="search" />
+    <li ng-repeat="facility in facilities | filter:search">
+        <a href="{{facility.name.href}}"><strong>{{facility.name.text}}</strong></a> <span ng-show="facility.phoneNumber">- <a href="tel://{{facility.phoneNumber}}">Call <i class="fa fa-phone"></i></a></span>
+        <span ng-hide="facility.showAddress">- <a ng-click="facility.showAddress = true" href="javascript:// Show Address">Show Address</a></span>
+        <div ng-show="facility.showAddress">
+            {{facility.address}} - <a href="https://maps.google.com/?q={{(facility.address | encodeURI)}}" target="_blank">Map</a>
+        </div>
+
+    </li>
+</ul>

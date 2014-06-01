@@ -2,12 +2,15 @@
 
 /* Controllers */
 
-angular.module('myApp.controllers', []).
-    controller('vaFacilitiesCtrl', ['$scope', 'facilitiesService', function($scope, facilitiesService) {
+angular.module('myApp.controllers', [])
+    .controller('homeCtrl', [function() {
+
+    }])
+    .controller('facilityCtrl', ['$scope', 'facilityService', function($scope, facilityService) {
 
         function getFeed() {
             $scope.facilites = [];
-            facilitiesService.getVAFacilities().then(function(data) {
+            facilityService.getVAFacilities().then(function(data) {
                 $scope.facilities = data.results.facilities;
             });
         }
@@ -18,6 +21,6 @@ angular.module('myApp.controllers', []).
         getFeed();
 
     }])
-    .controller('MyCtrl2', [function() {
+    .controller('jobCtrl', [function() {
 
     }]);
