@@ -80,6 +80,8 @@ angular.module('myApp.controllers', [])
         };
 
         $scope.selectFacility = function(stationId) {
+            $scope.facility = undefined;
+
             facilityService.getFacility(stationId).then(function(facility) {
                 $scope.facility = facility;
                 var mapPoint = [Number(facility.longitude), Number(facility.latitude)];
@@ -111,6 +113,27 @@ angular.module('myApp.controllers', [])
                 }
             });
         }
+
+
+        $(function() {
+            var $sidebar   = $("#facility-details"),
+                $window    = $(window),
+                offset     = $sidebar.offset(),
+                topPadding = 40;
+
+            $window.scroll(function() {
+                if ($window.scrollTop() > offset.top) {
+                    $sidebar.stop().animate({
+                        marginTop: $window.scrollTop() - offset.top + topPadding
+                    });
+                } else {
+                    $sidebar.stop().animate({
+                        marginTop: 0
+                    });
+                }
+            });
+
+        });
 
     }])
     .controller('jobCtrl', ['$scope','jobService', function($scope, jobService) {
