@@ -4,6 +4,11 @@
 
 
 angular.module('myApp.directives', [])
-    .directive('appVersion', [function() {
-
-    }]);
+    .directive('collapsible', function(){
+        return {
+            restrict: 'A',
+            link: function(scope, element, attributes){
+                $(element).collapse();
+            }
+        }
+    });
