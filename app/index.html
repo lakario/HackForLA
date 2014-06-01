@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="utf-8">
+  <title>My AngularJS App</title>
+  <link rel="stylesheet" href="css/app.css"/>
+</head>
+<body>
+  <!--<ul class="menu">-->
+    <!--<li><a href="#/view1">view1</a></li>-->
+    <!--<li><a href="#/view2">view2</a></li>-->
+  <!--</ul>-->
+
+  <div ng-controller="vaFacilitiesCtrl">
+      <button type="button" ng-click="refreshFeed()">Refresh</button>
+
+      <h3>Facilities</h3>
+      <ul>
+          Search <input type="text" ng-model="search" />
+          <li ng-repeat="facility in facilities | filter:search">
+              <strong>{{facility.name.text}}</strong> - <a href="{{facility.name.href}}">link</a> - <a ng-click="facility.showAddress = true" href="javascript:// Show Address">Show Address</a>
+              <div ng-show="facility.showAddress">
+                  {{facility.address}}
+              </div>
+          </li>
+      </ul>
+
+  </div>
+
+  <div ng-view></div>
+
+  <script src="lib/angular/angular.js"></script>
+  <script src="lib/angular/angular-route.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/services.js"></script>
+  <script src="js/controllers.js"></script>
+  <script src="js/filters.js"></script>
+  <script src="js/directives.js"></script>
+</body>
+</html>
